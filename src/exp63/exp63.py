@@ -400,16 +400,6 @@ class Model(nn.Module):
         img4 = img[:, 9:12, :, :]
         img5 = img[:, 12:15, :, :]
         
-        # img1 = self.backbone(img1)[-1] # torch.Size([128, 320, 8, 8])
-        # img2 = self.backbone(img2)[-1]
-        # img3 = self.backbone(img3)[-1]
-        # img4 = self.backbone(img4)[-1]
-        # img5 = self.backbone(img5)[-1]
-        
-        # img = torch.cat([img1, img2, img3, img4, img5], axis=1)
-        
-        # img = self.conv3d(img.view(b*2, -1, 5, 8, 8)).reshape(b, -1) # torch.Size([64, 128, 1, 4, 4])
-        
         img1 = self.backbone(img1)[-1].view(b*2, 320, -1, 8, 8)
         img2 = self.backbone(img2)[-1].view(b*2, 320, -1, 8, 8)
         img3 = self.backbone(img3)[-1].view(b*2, 320, -1, 8, 8)
